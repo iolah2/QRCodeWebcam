@@ -1,0 +1,18 @@
+This project is to test the ability to scan barcodes and QR codes using a Windows Forms app. It uses Aforge and ZXing to accomplish this.
+
+NuGet packages:
+AForge.Video.DirectShow
+ZXing.Net
+
+References used to develop this:
+'https://foxlearn.com/windows-forms/qr-code-scanner-using-camera-in-csharp-380.html
+'https://www.codeproject.com/Questions/535124/connectingplusapluswebcamplususingplusaforge-netpl
+'https://laptrinhvb.net/index.php?/bai-viet/chuyen-de-vb-net/Huong-dan-lap-trinh-ung-dung-doc-QR-(Scan-QR-)--code-su-dung-thu-vien-Zxing--bang-VB-NET/14750387ccc5e533.html
+'https://stackoverflow.com/questions/50302574/usb-cam-feed-not-displaying-in-picturebox-using-c-sharp-and-aforge
+
+
+
+There are two projects QRCodeWebcam and QRCodeWebcam2. They both do the same thing. The difference is that one is VB and the other C#. 
+
+QRCodeWebcam - VB
+QRCodeWebcam2 - C#
