@@ -1,4 +1,4 @@
-This project is to test the ability to scan barcodes and QR codes using a Windows Forms app. It uses Aforge and ZXing to accomplish this.
+This project is to test the ability to scan barcodes and QR codes using the device camera from a Windows Forms app. It uses Aforge and ZXing to accomplish this.
 
 NuGet packages:
 AForge.Video.DirectShow
