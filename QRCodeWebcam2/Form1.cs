@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace QRCodeWebcam2
     {
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
-        private static readonly List<BarcodeFormat> Fmts = new List<BarcodeFormat> { BarcodeFormat.CODE_39, BarcodeFormat.CODE_128, BarcodeFormat.QR_CODE };
+        private static readonly List<BarcodeFormat> Fmts = new List<BarcodeFormat> {BarcodeFormat.CODE_39, BarcodeFormat.CODE_128, BarcodeFormat.QR_CODE };
 
         public Form1()
         {
@@ -35,14 +36,20 @@ namespace QRCodeWebcam2
                 cboDevice.Items.Add(Device.Name);
             cboDevice.SelectedIndex = 0;
             videoCaptureDevice = new VideoCaptureDevice();
+
+            pictureBox.Image = null;            
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
-        {
+        private void CameraStart_Click(object sender, EventArgs e)
+        {            
             pictureBox.Image = null;
             videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cboDevice.SelectedIndex].MonikerString);
             videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
-            videoCaptureDevice.Start();
+            videoCaptureDevice.Start();            
+        }
+
+        private void Scan_click(object sender, EventArgs e)
+        {
             timer1.Start();
         }
 
@@ -59,7 +66,7 @@ namespace QRCodeWebcam2
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             if (pictureBox.Image != null)
             {
@@ -79,25 +86,31 @@ namespace QRCodeWebcam2
                 Result result = barcodeReader.Decode(myClone);
                 if (result != null)
                 {
-                    txtQRCode.Text = $"{((!string.IsNullOrWhiteSpace(txtQRCode.Text)) ? (txtQRCode.Text + Environment.NewLine) : "")} result: {result.ToString()} {Environment.NewLine} BarcodeFormat: {result.BarcodeFormat} {Environment.NewLine}";
-                    timer1.Stop();
-
-                    if (videoCaptureDevice.IsRunning)
+                    //MessageBox.Show(result.ToString());
+                    //txtQRCode.Text = $"{((!string.IsNullOrWhiteSpace(txtQRCode.Text)) ? (txtQRCode.Text + Environment.NewLine) : "")} result: {result.ToString()} {Environment.NewLine} BarcodeFormat: {result.BarcodeFormat} {Environment.NewLine}";
+                    //timer1.Stop();                    
+                    try
                     {
-                        videoCaptureDevice.Stop();
+                        txtQRCode.Text = /*$"{((!string.IsNullOrWhiteSpace(txtQRCode.Text)) ? (txtQRCode.Text + Environment.NewLine) : "")}*/$"Fájl elérése:\n{result}";
+                        Process.Start(result.ToString());// @"C:\Users\User\Source\Repos\QRCoder\license.txt");//result.ToString());
+                        //MessageBox.Show(result.ToString());
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Hiba a ({result}) fájl megnyitásakor"+ex.Message);
+                    }                    
                 }
             }
         }
         
-        private void txtQRCode_TextChanged(object sender, EventArgs e)
+        private void TxtQRCode_TextChanged(object sender, EventArgs e)
         {
             pictureBox.Image = null;
             timer1.Stop();
             if (videoCaptureDevice.IsRunning)
             {
                 videoCaptureDevice.Stop();
-                btnStart_Click(null, null);
+                pictureBox.Image = null;       //btnStart_Click(null, null);
             }                       
         }
 
@@ -109,8 +122,6 @@ namespace QRCodeWebcam2
         private void pictureBox_Click(object sender, EventArgs e)
         {
 
-        }
-
-        
+        }        
     }
 }
