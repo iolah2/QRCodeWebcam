@@ -28,9 +28,9 @@ namespace OpenFileWithQRReader
             };
             btnScan.Clicked += async (a, s) =>
             {
-                scanPage = new ZXingScannerPage();
+                scanPage = new ZXingScannerPage() { IsScanning = true, IsAnalyzing = true};
                 // Use current Navigation directly    
-                await Navigation.PushAsync(scanPage);
+                //await Navigation.PushAsync(scanPage);
                 //https://social.msdn.microsoft.com/Forums/en-US/e61054c5-e2d7-4468-a900-532aca3d1a1b/zxingscannerpage-is-not-opening-to-read-qr-code?forum=xamarinios
                 scanPage.OnScanResult += (result) =>
                 {
@@ -41,7 +41,7 @@ namespace OpenFileWithQRReader
                         await DisplayAlert("Scanned Barcode", result.Text + " , " + result.BarcodeFormat + " ," + result.ResultPoints[0].ToString(), "OK");
                     });
                 };
-                //await Navigation.PushModalAsync(scanPage);
+                await Navigation.PushModalAsync(scanPage);
             };
             stackMainlayout.Children.Add(btnScan);
             Content = stackMainlayout;
