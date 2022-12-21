@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.openfilewithqrreader">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+  <!--https://www.c-sharpcorner.com/blogs/using-zxing-code-128-scanner-in-xamarin-forms2-->
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.FLASHLIGHT" />
+  <application android:label="OpenFileWithQRReader.Android" android:theme="@style/MainTheme"></application>
+</manifest>
