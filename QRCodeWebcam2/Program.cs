@@ -16,7 +16,20 @@ namespace QRCodeWebcam2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            try
+            {
+                Application.Run(new Form1());
+            }
+            catch (Exception)
+            {
+                CameraMistake();
+            }
+        }
+
+        public static void CameraMistake()
+        {
+            MessageBox.Show("Kérem csatlakoztassa a kamerát!\nA kódolvasó leáll!");
+            Application.Exit();
         }
     }
 }

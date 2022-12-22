@@ -11,6 +11,7 @@
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
 "SccProvider" = "8:"
+"BackwardsCompatibleGUIDGeneration" = "8:TRUE"
     "Hierarchy"
     {
         "Entry"
@@ -76,12 +77,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A690B3151D6F6AF3232BF0E95BFB5E06"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_21BA4D489359465AA4C05DD96792B868"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -115,6 +110,12 @@
         "OwnerKey" = "8:_3FED482513F82D66272BCF4525EFE6BD"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A690B3151D6F6AF3232BF0E95BFB5E06"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -133,6 +134,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -149,6 +158,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -421,11 +446,11 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:QR Kódolvasó"
         "ProductCode" = "8:{D62191F2-32E5-4A55-B754-AC7E26E7861C}"
-        "PackageCode" = "8:{41E942F3-DBCD-45AF-9110-933E70204538}"
+        "PackageCode" = "8:{D36A0690-516A-4EC3-9A58-F67B870C63C4}"
         "UpgradeCode" = "8:{A439561E-E8CC-4E9E-B6C4-EEDDB899AB1D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:TRUE"
+        "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
@@ -970,7 +995,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_21BA4D489359465AA4C05DD96792B868"
             {
-            "SourcePath" = "8:..\\QRCodeWebcam2\\obj\\Debug\\QRCodeWebcam2.exe"
+            "SourcePath" = "8:..\\QRCodeWebcam2\\obj\\Release\\QRCodeWebcam2.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_FB8B7FB8D6DE489AB419D3A45B214372"

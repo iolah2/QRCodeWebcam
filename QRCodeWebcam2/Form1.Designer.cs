@@ -33,9 +33,9 @@
             this.txtQRCode = new System.Windows.Forms.TextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.cboDevice = new System.Windows.Forms.ComboBox();
-            this.btnStart = new System.Windows.Forms.Button();
+            this.startBtn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.scanBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -81,30 +81,30 @@
             this.cboDevice.TabIndex = 6;
             this.cboDevice.SelectedIndexChanged += new System.EventHandler(this.cboDevice_SelectedIndexChanged);
             // 
-            // btnStart
+            // startBtn
             // 
-            this.btnStart.Location = new System.Drawing.Point(496, 9);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(83, 31);
-            this.btnStart.TabIndex = 5;
-            this.btnStart.Text = "Kamera indít";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.CameraStart_Click);
+            this.startBtn.Location = new System.Drawing.Point(496, 9);
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(83, 31);
+            this.startBtn.TabIndex = 5;
+            this.startBtn.Text = "Kamera";
+            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.Click += new System.EventHandler(this.CameraStart_Click);
             // 
             // timer1
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // button1
+            // scanBtn
             // 
-            this.button1.Location = new System.Drawing.Point(604, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 31);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Kód olvasás";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Scan_click);
+            this.scanBtn.Location = new System.Drawing.Point(604, 9);
+            this.scanBtn.Name = "scanBtn";
+            this.scanBtn.Size = new System.Drawing.Size(79, 31);
+            this.scanBtn.TabIndex = 9;
+            this.scanBtn.Text = "Kód olvasás";
+            this.scanBtn.UseVisualStyleBackColor = true;
+            this.scanBtn.Click += new System.EventHandler(this.Scan_click);
             // 
             // groupBox1
             // 
@@ -123,10 +123,10 @@
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.ClientSize = new System.Drawing.Size(749, 352);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.scanBtn);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.cboDevice);
-            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.startBtn);
             this.Controls.Add(this.Label1);
             this.Name = "Form1";
             this.Text = "QR kód olvasás";
@@ -146,9 +146,9 @@
         internal System.Windows.Forms.TextBox txtQRCode;
         internal System.Windows.Forms.PictureBox pictureBox;
         internal System.Windows.Forms.ComboBox cboDevice;
-        internal System.Windows.Forms.Button btnStart;
+        internal System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.Timer timer1;
-        internal System.Windows.Forms.Button button1;
+        internal System.Windows.Forms.Button scanBtn;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }
