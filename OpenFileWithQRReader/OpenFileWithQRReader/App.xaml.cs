@@ -10,7 +10,7 @@ namespace OpenFileWithQRReader
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new ScanBarCode());//ScanBarCode();
+            MainPage = new Page1();//new NavigationPage(new ScanBarCode());//ScanBarCode();
         }
 
         protected override void OnStart()

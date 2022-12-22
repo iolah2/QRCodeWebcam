@@ -40,11 +40,8 @@ namespace QRCodeWebcam2
         {
             try
             {
-                filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-                foreach (FilterInfo Device in filterInfoCollection)
-                    cboDevice.Items.Add(Device.Name);
-                videoCaptureDevice = new VideoCaptureDevice();
-                cboDevice.SelectedIndex = 0;
+                GetCameras();
+                videoCaptureDevice = new VideoCaptureDevice();                
                 pictureBox.Image = null;
             }
             catch (Exception)
@@ -53,12 +50,27 @@ namespace QRCodeWebcam2
             }
         }
 
+        private void GetCameras()
+        {
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            foreach (FilterInfo Device in filterInfoCollection)
+                cboDevice.Items.Add(Device.Name);
+            if (cboDevice.Items.Count > 0)
+                cboDevice.SelectedIndex = 0;
+        }
+
         private void CameraStart_Click(object sender, EventArgs e)
         {
 
             try
             {
-                
+                if (cboDevice.Items.Count == 0)
+                {
+                    MessageBox.Show("Kérem csatlakoztassa a kamerát, majd nyomjon az OK gombra!\nEgyéb esetben a kódolvasó leáll!");
+                    GetCameras();
+                    if (cboDevice.Items.Count == 0)
+                        throw new Exception("Nincs elérhető kamera!");
+                }
                 if (IsCameraActive)
                 {
                     videoCaptureDevice.Stop();
