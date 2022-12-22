@@ -29,6 +29,15 @@ namespace OpenFileWithQRReader
             btnScan.Clicked += async (a, s) =>
             {
                 scanPage = new ZXingScannerPage() { IsScanning = true, IsAnalyzing = true};
+                try
+                {
+                    
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
                 // Use current Navigation directly    
                 //await Navigation.PushAsync(scanPage);
                 //https://social.msdn.microsoft.com/Forums/en-US/e61054c5-e2d7-4468-a900-532aca3d1a1b/zxingscannerpage-is-not-opening-to-read-qr-code?forum=xamarinios
