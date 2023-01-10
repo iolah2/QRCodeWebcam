@@ -37,6 +37,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.scanBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -52,11 +53,11 @@
             // 
             // txtQRCode
             // 
-            this.txtQRCode.Location = new System.Drawing.Point(11, 19);
+            this.txtQRCode.Location = new System.Drawing.Point(18, 58);
             this.txtQRCode.Multiline = true;
             this.txtQRCode.Name = "txtQRCode";
             this.txtQRCode.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtQRCode.Size = new System.Drawing.Size(263, 250);
+            this.txtQRCode.Size = new System.Drawing.Size(263, 193);
             this.txtQRCode.TabIndex = 8;
             this.txtQRCode.TextChanged += new System.EventHandler(this.TxtQRCode_TextChanged);
             // 
@@ -108,6 +109,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.txtQRCode);
             this.groupBox1.Location = new System.Drawing.Point(456, 53);
             this.groupBox1.Name = "groupBox1";
@@ -115,6 +117,17 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Beolvasott fájl elérés:";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(15, 26);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel1.TabIndex = 9;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkLabel1";
+            this.linkLabel1.TextChanged += new System.EventHandler(this.linkLabel1_TextChanged);
             // 
             // Form1
             // 
@@ -150,6 +163,7 @@
         private System.Windows.Forms.Timer timer1;
         internal System.Windows.Forms.Button scanBtn;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
