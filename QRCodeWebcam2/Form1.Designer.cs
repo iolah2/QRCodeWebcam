@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Label1 = new System.Windows.Forms.Label();
-            this.txtQRCode = new System.Windows.Forms.TextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.cboDevice = new System.Windows.Forms.ComboBox();
             this.startBtn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.scanBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -50,16 +50,6 @@
             this.Label1.Size = new System.Drawing.Size(46, 13);
             this.Label1.TabIndex = 2;
             this.Label1.Text = "Kamera:";
-            // 
-            // txtQRCode
-            // 
-            this.txtQRCode.Location = new System.Drawing.Point(18, 58);
-            this.txtQRCode.Multiline = true;
-            this.txtQRCode.Name = "txtQRCode";
-            this.txtQRCode.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtQRCode.Size = new System.Drawing.Size(263, 193);
-            this.txtQRCode.TabIndex = 8;
-            this.txtQRCode.TextChanged += new System.EventHandler(this.TxtQRCode_TextChanged);
             // 
             // pictureBox
             // 
@@ -109,8 +99,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.linkLabel1);
-            this.groupBox1.Controls.Add(this.txtQRCode);
+            this.groupBox1.Controls.Add(this.flowLayoutPanel1);
             this.groupBox1.Location = new System.Drawing.Point(456, 53);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(289, 275);
@@ -118,16 +107,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Beolvasott fájl elérés:";
             // 
-            // linkLabel1
+            // linkLabel2
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(15, 26);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(55, 13);
-            this.linkLabel1.TabIndex = 9;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkLabel1";
-            this.linkLabel1.TextChanged += new System.EventHandler(this.linkLabel1_TextChanged);
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(3, 51);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel2.TabIndex = 11;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "linkLabel2";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(283, 256);
+            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.WrapContents = false;
             // 
             // Form1
             // 
@@ -147,7 +146,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,14 +154,14 @@
         #endregion
 
         internal System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.TextBox txtQRCode;
         internal System.Windows.Forms.PictureBox pictureBox;
         internal System.Windows.Forms.ComboBox cboDevice;
         internal System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.Timer timer1;
         internal System.Windows.Forms.Button scanBtn;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 
