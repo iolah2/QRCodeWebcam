@@ -22,9 +22,11 @@ namespace QRCodeWebcam2
     {
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
-        private Color colorBackStart;
+        int width = 220;
+        int height = 220;
+        //private Color colorBackStart;
         private Color colorBackScan;
-        Timer timer2;
+        //Timer timer2;
         private static readonly List<BarcodeFormat> Fmts = new List<BarcodeFormat> { BarcodeFormat.CODE_39, BarcodeFormat.CODE_128, BarcodeFormat.QR_CODE };
        // private readonly List<LinkLocal> LinkLocals;
 
@@ -40,7 +42,7 @@ namespace QRCodeWebcam2
             
             startBtn.BackColor = Color.WhiteSmoke;
             scanBtn.BackColor = Color.WhiteSmoke;
-            linePosition = 0;
+            //linePosition = 0;
             szamlaloLink = 1;
             pictureBox.Paint += PictureBox_Paint;
             //  LinkLocals = new List<LinkLocal>();
@@ -125,54 +127,53 @@ namespace QRCodeWebcam2
                 Program.CameraMistake();
             }
         }
-        int direction = 1;
-        int width = 180;
-        int height = 180;
+        //int direction = 1;
+       
         //Rectangle? rect = null;
-        private void Timer2_Tick(object sender, EventArgs e)
-        {
-            if (pictureBox.Image == null)
-                return;
+        //private void Timer2_Tick(object sender, EventArgs e)
+        //{
+        //    if (pictureBox.Image == null)
+        //        return;
 
-            // Get a Graphics object for the PictureBox and draw the line
-            //using (var g = pictureBox.CreateGraphics())
-            //{
-            ////    //if (rect == null)
-            ////    {
-            //        var rect = new Rectangle((pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2, width, height);
-            //        var p = new Pen(Brushes.White, 2);
-            //        g.DrawRectangle(p, rect);
-            ////    }
-            ////g.DrawLine(Pens.Red, 0, linePosition, pictureBox.Width, linePosition);
-            ////    //g.DrawLine(Pens.Red, (pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2 + linePosition, (pictureBox.Width + width) / 2, (pictureBox.Height - height) / 2 + linePosition);
+        //    // Get a Graphics object for the PictureBox and draw the line
+        //    //using (var g = pictureBox.CreateGraphics())
+        //    //{
+        //    ////    //if (rect == null)
+        //    ////    {
+        //    //        var rect = new Rectangle((pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2, width, height);
+        //    //        var p = new Pen(Brushes.White, 2);
+        //    //        g.DrawRectangle(p, rect);
+        //    ////    }
+        //    ////g.DrawLine(Pens.Red, 0, linePosition, pictureBox.Width, linePosition);
+        //    ////    //g.DrawLine(Pens.Red, (pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2 + linePosition, (pictureBox.Width + width) / 2, (pictureBox.Height - height) / 2 + linePosition);
 
-            //}
-            //pictureBox.Controls.Remove(pictureBox1);
-            //pictureBox1 = new PictureBox();            
-            //pictureBox1.Top = TopLevel;
+        //    //}
+        //    //pictureBox.Controls.Remove(pictureBox1);
+        //    //pictureBox1 = new PictureBox();            
+        //    //pictureBox1.Top = TopLevel;
            
-            //using (var g2 = pictureBox1.CreateGraphics())
-            //{
-            //    g2.DrawLine(Pens.Red, 0, linePosition, width+4, linePosition);//(pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2 + linePosition, (pictureBox.Width + width) / 2, (pictureBox.Height - height) / 2 + linePosition);
+        //    //using (var g2 = pictureBox1.CreateGraphics())
+        //    //{
+        //    //    g2.DrawLine(Pens.Red, 0, linePosition, width+4, linePosition);//(pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2 + linePosition, (pictureBox.Width + width) / 2, (pictureBox.Height - height) / 2 + linePosition);
                
-            //    var rect = new Rectangle(2, 2, width, height);
-            //    var p = new Pen(Brushes.White, 2);
-            //    g2.DrawRectangle(p, rect);
-            //}
-                //direction = 1;
-                // Update the line position
-            //    linePosition += 5 * direction;
-            //if (linePosition > height)
-            //{
-            //    direction = -1;
-            //    linePosition += 5 * direction;
-            //}
-            //else if (linePosition < 0)
-            //{
-            //    direction = 1;
-            //    linePosition += 5 * direction;
-            //}
-        }
+        //    //    var rect = new Rectangle(2, 2, width, height);
+        //    //    var p = new Pen(Brushes.White, 2);
+        //    //    g2.DrawRectangle(p, rect);
+        //    //}
+        //        //direction = 1;
+        //        // Update the line position
+        //    //    linePosition += 5 * direction;
+        //    //if (linePosition > height)
+        //    //{
+        //    //    direction = -1;
+        //    //    linePosition += 5 * direction;
+        //    //}
+        //    //else if (linePosition < 0)
+        //    //{
+        //    //    direction = 1;
+        //    //    linePosition += 5 * direction;
+        //    //}
+        //}
 
         private void GetCameras()
         {
@@ -292,16 +293,24 @@ namespace QRCodeWebcam2
                         PureBarcode = false
                     }
                 };
+
+                #region kivett 2023 jan 19
                 //var t1 = DateTime.Now;
-                int x = (pictureBox.Width - width) / 2;
-                int y = (pictureBox.Height - height) / 2;
+                ////////int x = (pictureBox.Width - width) / 2;
+                ////////int y = (pictureBox.Height - height) / 2;
+               
+                ////////int a = pictureBox.Image.Width / pictureBox.Width;
+                ////////int b = pictureBox.Image.Height / pictureBox.Height;
+
+
+                ////////var rect = new Rectangle(a * x + (x % 2) * (width / 2), b * y + (y % 2) * (height / 2), Math.Max(a, b) * width, Math.Max(a, b) * height);//x, y, width, height);
+                ////////var croppedImage = ((Bitmap)pictureBox.Image)
+                ////////    .Clone(rect, pictureBox.Image.PixelFormat);
+                #endregion
                 //Bitmap myClone = ((Bitmap)pictureBox.Image)
                 // .Clone(     //new Rectangle(0, 0, ((Bitmap)pictureBox.Image).Width, ((Bitmap)pictureBox.Image).Height), PixelFormat.Format24bppRgb);
                 //////    new Rectangle(x, y, /*((Bitmap)pictureBox.Image).Width*/width, /*((Bitmap)pictureBox.Image).Height)*/height), PixelFormat.Format24bppRgb);
                 //////Result result = barcodeReader.Decode(myClone);
-                int a = pictureBox.Image.Width / pictureBox.Width;
-                int b = pictureBox.Image.Height / pictureBox.Height;
-
                 // Get the image of the scanning square from the PictureBox
                 //Bitmap image = new Bitmap(width, height);
                 //using (Graphics g = Graphics.FromImage(image))
@@ -310,9 +319,7 @@ namespace QRCodeWebcam2
                 //                new Rectangle(x, y, width, height), GraphicsUnit.Pixel);
                 //    g.Save();
                 //}
-                var rect = new Rectangle(a * x + (x % 2) * 90, b * y + (y % 2) * 90, Math.Max(a, b) * 180, Math.Max(a, b) * 180);//x, y, width, height);
-                var croppedImage = ((Bitmap)pictureBox.Image)
-                    .Clone(rect, pictureBox.Image.PixelFormat);
+
                 //MessageBox.Show((DateTime.Now - t1).TotalSeconds.ToString());
                 //pictureBox.Image.Save(@"C:\Users\User\Source\Repos\2022\QRCodeWebcam\QRCodeWebcam2\bin\Debug\QRKepek\2022_src.jpg");
 
@@ -324,7 +331,8 @@ namespace QRCodeWebcam2
 
                 // Decode the QR code in the image
                 //return;
-                var result = barcodeReader.Decode(croppedImage);
+
+                var result = barcodeReader.Decode((Bitmap)pictureBox.Image);//croppedImage);
                 if (result != null)
                 {
                     timer1.Stop();
