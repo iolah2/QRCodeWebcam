@@ -34,6 +34,7 @@ namespace QRCodeWebcam2
         public bool IsScanActive { get; private set; }
         //private int linePosition;
         private int szamlaloLink;
+        private BarcodeReader barcodeReader;
 
         public Form1()
         {
@@ -52,38 +53,7 @@ namespace QRCodeWebcam2
             //    AutoScroll = true,
             //    FlowDirection = FlowDirection.TopDown,
             //    WrapContents = false
-            //};
-            ////Panel panel1 = new Panel();
-            //flowLayoutPanel1.AutoScroll = true;
-            //flowLayoutPanel1.Controls.Add
-            // Add controls to the panel
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 1" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 2" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 3" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 1" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 2" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 3" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 1" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 2" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 3" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 1" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 2" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 1" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 2" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 3" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 1" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 2" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 3" });
-            //flowLayoutPanel1.Controls.Add(new Button() { Text = "Button 3" });
-            // Add the panel to the group box
-            //groupBox1.Controls.Add(panel1);
-            //pictureBox1.Location = new Point(/*pictureBox.Location.X +*/ (pictureBox.Width - width) / 2 - 2, /*pictureBox.Location.Y +*/ (pictureBox.Height - height) / 2 - 2);
-            //pictureBox1.Size = new Size(width + 4, height + 4);
-            //pictureBox1.BackColor = Color.Transparent;
-            //pictureBox.Controls.Add(pictureBox1);
-            //listView1.View = View.Details;
-            //listView1.OwnerDraw = true;
-            //listView1.DrawItem += listView1_DrawItem;
+            //};            
         }
 
         private void PictureBox_Paint(object sender, PaintEventArgs e)
@@ -92,7 +62,7 @@ namespace QRCodeWebcam2
             var rect = new Rectangle((pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2, width, height);
             var p = new Pen(Brushes.White, 2);
             e.Graphics.DrawRectangle(p, rect);
-            //e.Graphics.DrawRectangle(Pens.Black, 10, 10, 10, 10);
+            
         }
 
         //private void listView1_DrawItem(object sender, DrawListViewItemEventArgs e)
@@ -109,13 +79,7 @@ namespace QRCodeWebcam2
         //}
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            //linkLabel1.Text = "Link helye";
-            //linkLabel1.LinkClicked += LinkLabel1_LinkClicked;
-            /*timer2 = new Timer();
-            timer2.Interval = 30;
-            timer2.Tick += Timer2_Tick;
-            */
+        {            
             try
             {
                 GetCameras();
@@ -127,14 +91,6 @@ namespace QRCodeWebcam2
                 Program.CameraMistake();
             }
         }
-        //int direction = 1;
-       
-        //Rectangle? rect = null;
-        //private void Timer2_Tick(object sender, EventArgs e)
-        //{
-        //    if (pictureBox.Image == null)
-        //        return;
-
         //    // Get a Graphics object for the PictureBox and draw the line
         //    //using (var g = pictureBox.CreateGraphics())
         //    //{
@@ -186,7 +142,6 @@ namespace QRCodeWebcam2
 
         private void CameraStart_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (cboDevice.Items.Count == 0)
@@ -196,14 +151,9 @@ namespace QRCodeWebcam2
                     if (cboDevice.Items.Count == 0)
                         throw new Exception("Nincs elérhető kamera!");
                 }
+                ///Camera turn off
                 if (IsCameraActive)
-                {
-                    
-                    ////g.DrawLine(Pens.Red, 0, linePosition, pictureBox.Width, linePosition);
-                    ////    //g.DrawLine(Pens.Red, (pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2 + linePosition, (pictureBox.Width + width) / 2, (pictureBox.Height - height) / 2 + linePosition);
-
-                    //}
-                    //timer2.Stop();
+                {                    
                     videoCaptureDevice.Stop();
                     pictureBox.Image = null;
                     startBtn.BackColor = Color.WhiteSmoke;//.LightGray;
@@ -211,24 +161,15 @@ namespace QRCodeWebcam2
                     scanBtn.BackColor = Color.WhiteSmoke;
                     IsCameraActive = false;
                 }
-                else
+                else ///Turn on for camera
                 {
                     pictureBox.Image = null;                    
                     videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cboDevice.SelectedIndex].MonikerString);
                     videoCaptureDevice.NewFrame += FinalFrame_NewFrame;                    
                     videoCaptureDevice.Start();
-                    //using (var g = pictureBox.CreateGraphics())
-                    //{
-                    //    ////    //if (rect == null)
-                    //    ////    {
-                    //    var rect = new Rectangle((pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2, width, height);
-                    //    var p = new Pen(Brushes.White, 2);
-                    //    g.DrawRectangle(p, rect);                        
-                    //}
-                    //colorBackStart = startBtn.BackColor;
+                    
                     startBtn.BackColor = Color.Green;
-                    IsCameraActive = true;
-                    //timer2.Start();
+                    IsCameraActive = true;                    
                 }
             }
             catch (Exception)
@@ -239,16 +180,29 @@ namespace QRCodeWebcam2
 
         private void Scan_click(object sender, EventArgs e)
         {
-            if (IsScanActive)
+            if (IsScanActive) ///Scan stop
             {
                 timer1.Stop();
+                barcodeReader = null;
                 scanBtn.BackColor = Color.WhiteSmoke;
                 IsScanActive = false;
             }
-            else
+            else ///Scan start
             {
                 if (!IsCameraActive)
                     CameraStart_Click(null, null);
+                barcodeReader = new BarcodeReader
+                {
+                    AutoRotate = true,
+                    Options = {
+                        TryInverted = true,
+                        PossibleFormats = Fmts,
+                        TryHarder = true,
+                        ReturnCodabarStartEnd = true,
+                        PureBarcode = false
+                    }
+                };
+
                 timer1.Start();
                 colorBackScan = scanBtn.BackColor;
                 scanBtn.BackColor = Color.Green;
@@ -281,24 +235,25 @@ namespace QRCodeWebcam2
 
 
             if (pictureBox.Image != null)
-            {
-                BarcodeReader barcodeReader = new BarcodeReader
-                {
-                    AutoRotate = true,
-                    Options = {
-                        TryInverted = true,
-                        PossibleFormats = Fmts,
-                        TryHarder = true,
-                        ReturnCodabarStartEnd = true,
-                        PureBarcode = false
-                    }
-                };
+            {                
+                //BarcodeReader barcodeReader = new BarcodeReader
+                //{
+                //    AutoRotate = true,
+                //    Options = {
+                //        TryInverted = true,
+                //        PossibleFormats = Fmts,
+                //        TryHarder = true,
+                //        ReturnCodabarStartEnd = true,
+                //        PureBarcode = false
+                //    }
+                //};
 
                 #region kivett 2023 jan 19
                 //var t1 = DateTime.Now;
                 ////////int x = (pictureBox.Width - width) / 2;
-                ////////int y = (pictureBox.Height - height) / 2;
-               
+                ////////int y = (pictur
+                ///eBox.Height - height) / 2;
+
                 ////////int a = pictureBox.Image.Width / pictureBox.Width;
                 ////////int b = pictureBox.Image.Height / pictureBox.Height;
 
@@ -331,8 +286,16 @@ namespace QRCodeWebcam2
 
                 // Decode the QR code in the image
                 //return;
+                //Bitmap myClone = ((Bitmap)pictureBox.Image).Clone(new Rectangle(0, 0, ((Bitmap)pictureBox.Image).Width, ((Bitmap)pictureBox.Image).Height), PixelFormat.Format24bppRgb);
+
 
                 var result = barcodeReader.Decode((Bitmap)pictureBox.Image);//croppedImage);
+                if (result != null)
+                {
+                    pictureBox.Image.Save(@"F:\2023\Varrival\Test\" + szamlaloLink + "_test.jpg");
+                    //Process.Start(@"F:\2023\Varrival\Test\" + szamlaloLink + "_test.jpg");
+                }
+
                 if (result != null)
                 {
                     timer1.Stop();
@@ -352,6 +315,9 @@ namespace QRCodeWebcam2
                          //        var match = Regex.Match(textBox1.Text, @"\b(?:https?://|www\.)\S+\b", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 //        if (match.Success)
                          */
+#if DEBUG
+                        throw new Exception();
+#endif
                         Process.Start(result.ToString());
                         Timer t1 = new Timer();
                         //t1.Start();
@@ -416,9 +382,13 @@ namespace QRCodeWebcam2
                     }
                     catch (Exception ex)
                     {
+#if DEBUG
+                        flowLayoutPanel1.Controls.Add(new Label() { Text = result.ToString() });
+#else
                         MessageBox.Show($"Hiba a ({result}) fájl megnyitásakor!\n\n"
                             + ex.Message);
                         //Logger need: ex.Message into a text file for later can debugging
+#endif
                     }
                     Scan_click(null, null);
                 }

@@ -36,8 +36,9 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.scanBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +57,7 @@
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox.Location = new System.Drawing.Point(15, 51);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(435, 291);
+            this.pictureBox.Size = new System.Drawing.Size(487, 438);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 7;
             this.pictureBox.TabStop = false;
@@ -68,13 +69,13 @@
             this.cboDevice.FormattingEnabled = true;
             this.cboDevice.Location = new System.Drawing.Point(73, 7);
             this.cboDevice.Name = "cboDevice";
-            this.cboDevice.Size = new System.Drawing.Size(356, 21);
+            this.cboDevice.Size = new System.Drawing.Size(271, 21);
             this.cboDevice.TabIndex = 6;
             this.cboDevice.SelectedIndexChanged += new System.EventHandler(this.cboDevice_SelectedIndexChanged);
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(496, 9);
+            this.startBtn.Location = new System.Drawing.Point(363, 4);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(83, 31);
             this.startBtn.TabIndex = 5;
@@ -89,7 +90,7 @@
             // 
             // scanBtn
             // 
-            this.scanBtn.Location = new System.Drawing.Point(604, 9);
+            this.scanBtn.Location = new System.Drawing.Point(488, 4);
             this.scanBtn.Name = "scanBtn";
             this.scanBtn.Size = new System.Drawing.Size(79, 31);
             this.scanBtn.TabIndex = 9;
@@ -100,12 +101,23 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox1.Location = new System.Drawing.Point(456, 53);
+            this.groupBox1.Location = new System.Drawing.Point(524, 44);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(289, 275);
+            this.groupBox1.Size = new System.Drawing.Size(305, 441);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Beolvasott fájl elérés:";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(299, 422);
+            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.WrapContents = false;
             // 
             // linkLabel2
             // 
@@ -117,23 +129,23 @@
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "linkLabel2";
             // 
-            // flowLayoutPanel1
+            // button1
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(283, 256);
-            this.flowLayoutPanel1.TabIndex = 0;
-            this.flowLayoutPanel1.WrapContents = false;
+            this.button1.Location = new System.Drawing.Point(633, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 31);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Lista törlése";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ListaTorleseBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.ClientSize = new System.Drawing.Size(749, 352);
+            this.ClientSize = new System.Drawing.Size(847, 504);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.scanBtn);
             this.Controls.Add(this.pictureBox);
@@ -162,6 +174,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        internal System.Windows.Forms.Button button1;
     }
 }
 
