@@ -28,19 +28,19 @@ namespace QRCodeWebcam2
         private Color colorBackScan;
         //Timer timer2;
         private static readonly List<BarcodeFormat> Fmts = new List<BarcodeFormat> { BarcodeFormat.CODE_39, BarcodeFormat.CODE_128, BarcodeFormat.QR_CODE };
-       // private readonly List<LinkLocal> LinkLocals;
+        // private readonly List<LinkLocal> LinkLocals;
 
         public bool IsCameraActive { get; private set; }
         public bool IsScanActive { get; private set; }
         //private int linePosition;
         private int szamlaloLink;
-        private BarcodeReader barcodeReader;
+        //private BarcodeReader barcodeReader;
 
         public Form1()
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            
+
             startBtn.BackColor = Color.WhiteSmoke;
             scanBtn.BackColor = Color.WhiteSmoke;
             //linePosition = 0;
@@ -62,7 +62,7 @@ namespace QRCodeWebcam2
             var rect = new Rectangle((pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2, width, height);
             var p = new Pen(Brushes.White, 2);
             e.Graphics.DrawRectangle(p, rect);
-            
+
         }
 
         //private void listView1_DrawItem(object sender, DrawListViewItemEventArgs e)
@@ -79,7 +79,7 @@ namespace QRCodeWebcam2
         //}
 
         private void Form1_Load(object sender, EventArgs e)
-        {            
+        {
             try
             {
                 GetCameras();
@@ -91,52 +91,21 @@ namespace QRCodeWebcam2
                 Program.CameraMistake();
             }
         }
-        //    // Get a Graphics object for the PictureBox and draw the line
-        //    //using (var g = pictureBox.CreateGraphics())
-        //    //{
-        //    ////    //if (rect == null)
-        //    ////    {
-        //    //        var rect = new Rectangle((pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2, width, height);
-        //    //        var p = new Pen(Brushes.White, 2);
-        //    //        g.DrawRectangle(p, rect);
-        //    ////    }
-        //    ////g.DrawLine(Pens.Red, 0, linePosition, pictureBox.Width, linePosition);
-        //    ////    //g.DrawLine(Pens.Red, (pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2 + linePosition, (pictureBox.Width + width) / 2, (pictureBox.Height - height) / 2 + linePosition);
 
-        //    //}
-        //    //pictureBox.Controls.Remove(pictureBox1);
-        //    //pictureBox1 = new PictureBox();            
-        //    //pictureBox1.Top = TopLevel;
-           
-        //    //using (var g2 = pictureBox1.CreateGraphics())
-        //    //{
-        //    //    g2.DrawLine(Pens.Red, 0, linePosition, width+4, linePosition);//(pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2 + linePosition, (pictureBox.Width + width) / 2, (pictureBox.Height - height) / 2 + linePosition);
-               
-        //    //    var rect = new Rectangle(2, 2, width, height);
-        //    //    var p = new Pen(Brushes.White, 2);
-        //    //    g2.DrawRectangle(p, rect);
-        //    //}
-        //        //direction = 1;
-        //        // Update the line position
-        //    //    linePosition += 5 * direction;
-        //    //if (linePosition > height)
-        //    //{
-        //    //    direction = -1;
-        //    //    linePosition += 5 * direction;
-        //    //}
-        //    //else if (linePosition < 0)
-        //    //{
-        //    //    direction = 1;
-        //    //    linePosition += 5 * direction;
-        //    //}
-        //}
 
         private void GetCameras()
         {
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach (FilterInfo Device in filterInfoCollection)
-                cboDevice.Items.Add(Device.Name);
-            if (cboDevice.Items.Count > 0)
+            for (int i = 0; i < filterInfoCollection.Count; i++)
+            {
+                var device = filterInfoCollection[i];
+                cboDevice.Items.Add(device.Name);
+                if (device.Name.ToUpper().Contains("REAR"))
+                {
+                    cboDevice.SelectedIndex = i;
+                }
+            }
+            if (cboDevice.SelectedIndex == -1)
                 cboDevice.SelectedIndex = 0;
         }
 
@@ -153,7 +122,7 @@ namespace QRCodeWebcam2
                 }
                 ///Camera turn off
                 if (IsCameraActive)
-                {                    
+                {
                     videoCaptureDevice.Stop();
                     pictureBox.Image = null;
                     startBtn.BackColor = Color.WhiteSmoke;//.LightGray;
@@ -163,13 +132,13 @@ namespace QRCodeWebcam2
                 }
                 else ///Turn on for camera
                 {
-                    pictureBox.Image = null;                    
+                    pictureBox.Image = null;
                     videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cboDevice.SelectedIndex].MonikerString);
-                    videoCaptureDevice.NewFrame += FinalFrame_NewFrame;                    
+                    videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
                     videoCaptureDevice.Start();
-                    
+
                     startBtn.BackColor = Color.Green;
-                    IsCameraActive = true;                    
+                    IsCameraActive = true;
                 }
             }
             catch (Exception)
@@ -183,7 +152,7 @@ namespace QRCodeWebcam2
             if (IsScanActive) ///Scan stop
             {
                 timer1.Stop();
-                barcodeReader = null;
+                //barcodeReader = null;
                 scanBtn.BackColor = Color.WhiteSmoke;
                 IsScanActive = false;
             }
@@ -191,17 +160,6 @@ namespace QRCodeWebcam2
             {
                 if (!IsCameraActive)
                     CameraStart_Click(null, null);
-                barcodeReader = new BarcodeReader
-                {
-                    AutoRotate = true,
-                    Options = {
-                        TryInverted = true,
-                        PossibleFormats = Fmts,
-                        TryHarder = true,
-                        ReturnCodabarStartEnd = true,
-                        PureBarcode = false
-                    }
-                };
 
                 timer1.Start();
                 colorBackScan = scanBtn.BackColor;
@@ -235,18 +193,18 @@ namespace QRCodeWebcam2
 
 
             if (pictureBox.Image != null)
-            {                
-                //BarcodeReader barcodeReader = new BarcodeReader
-                //{
-                //    AutoRotate = true,
-                //    Options = {
-                //        TryInverted = true,
-                //        PossibleFormats = Fmts,
-                //        TryHarder = true,
-                //        ReturnCodabarStartEnd = true,
-                //        PureBarcode = false
-                //    }
-                //};
+            {
+                BarcodeReader barcodeReader = new BarcodeReader
+                {
+                    AutoRotate = true,
+                    Options = {
+                        TryInverted = true,
+                        PossibleFormats = Fmts,
+                        TryHarder = true,
+                        ReturnCodabarStartEnd = true,
+                        PureBarcode = false
+                    }
+                };
 
                 #region kivett 2023 jan 19
                 //var t1 = DateTime.Now;
@@ -298,8 +256,9 @@ namespace QRCodeWebcam2
 
                 if (result != null)
                 {
-                    timer1.Stop();
-                    
+                    Scan_click(null, null);
+                    //timer1.Stop();
+
                     //MessageBox.Show(result.ToString());
                     //txtQRCode.Text = $"{((!string.IsNullOrWhiteSpace(txtQRCode.Text)) ? (txtQRCode.Text + Environment.NewLine) : "")} result: {result.ToString()} {Environment.NewLine} BarcodeFormat: {result.BarcodeFormat} {Environment.NewLine}";
                     //timer1.Stop();
@@ -308,6 +267,7 @@ namespace QRCodeWebcam2
                     //   System.IO.Directory.CreateDirectory("QRKepek");
                     // myClone.Save($@"C:\Users\User\Source\Repos\2022\QRCodeWebcam\QRCodeWebcam2\bin\Debug\QRKepek\{sorszam++}.jpg");
 #endif
+                    AddLinklabeToFlowLayoutPanel(result);
                     try
                     {
                         //var match =
@@ -316,86 +276,57 @@ namespace QRCodeWebcam2
 //        if (match.Success)
                          */
 #if DEBUG
+if(Environment.MachineName == "ISTI-PC")
                         throw new Exception();
 #endif
+
                         Process.Start(result.ToString());
-                        Timer t1 = new Timer();
-                        //t1.Start();
-                        var linkLabel = new LinkLabel()
-                        {
-
-                            AutoSize = true,
-                        Location = new System.Drawing.Point(3, 0),
-                        Name = "linkLabel"+szamlaloLink,
-                        
-                        //this.linkLabel1.Text = "linkLabel1";
-                        };
-                        //linkLabel.BackColor = Color.Yellow;
-                        linkLabel.Size = new System.Drawing.Size(55, 13);
-                        //linkLabel1.TabIndex = 0;
-                        linkLabel.TabStop = true;
-                        var linkAct = new LinkLocal();
-                        linkLabel.Text = $"{szamlaloLink++}. {result.ToString().Split('\\')?.Last()}";//linkAct.Show =
-                        linkLabel.Links.Add(0, result.ToString().Length, result.ToString());// = linkAct.Path = result.ToString();
-                        linkLabel.AutoSize = true;
-                        //LinkLocals.Add(linkAct);
-                        linkLabel.LinkClicked += LinkLabel1_LinkClicked;
-                        flowLayoutPanel1.Controls.Add(linkLabel);
-                        //flowLayoutPanel1.Invalidate();
-                        //listView1.Items.Add("linkLabel1");
-                        //listView1.Items.Add("linkLabel2");
-                        //listView1.Items.Add("linkLabel3");
-                        //listView1.Invalidate();
-                        //var stringBuilderShow = new StringBuilder();
-                        //var stringBuilderPath = new StringBuilder();
-                        ////var links = LinkLocals;
-                        //var links = new List<LinkLabel.Link>();
-                        //foreach (var link in LinkLocals)
-                        //{
-                        //    if (stringBuilderShow.Length > 0)
-                        //    {
-                        //        stringBuilderShow.AppendLine();
-                        //        stringBuilderPath.AppendLine();
-                        //    }
-
-
-                        //    // We cannot add the new LinkLabel.Link to the LinkLabel yet because
-                        //    // there is no text in the label yet, so the label will complain about
-                        //    // the link location being out of range. So we'll temporarily store
-                        //    // the links in a collection and add them later.
-                        //    links.Add(new LinkLabel.Link(stringBuilderPath.Length+1, link.Path.Length, link.Path));
-                        //    stringBuilderShow.Append(link.Show);
-                        //    stringBuilderPath.Append(link.Path);
-                        //}
-
-                        //var linkLabel = linkLabel1;// new LinkLabel();
-                        //// We must set the text before we add the links.
-                        //linkLabel.Text = stringBuilderShow.ToString();
-                        //foreach (var link in links)
-                        //{
-                        //    linkLabel.Links.Add(link);
-                        //}
-                        //linkLabel.AutoSize = true;
-                        //t1.Stop();
-                        //MessageBox.Show(t1.Interval.ToString() + "ms");
+                        //Timer t1 = new Timer();
 
                     }
                     catch (Exception ex)
                     {
 #if DEBUG
+if(Environment.MachineName == "ISTI-PC")
                         flowLayoutPanel1.Controls.Add(new Label() { Text = result.ToString() });
-#else
+#else                        
                         MessageBox.Show($"Hiba a ({result}) fájl megnyitásakor!\n\n"
                             + ex.Message);
-                        //Logger need: ex.Message into a text file for later can debugging
+                        RemoveLastLinklabeToFlowLayoutPanel(result);
 #endif
                     }
-                    Scan_click(null, null);
                 }
             }
         }
-       
 
+        private void AddLinklabeToFlowLayoutPanel(Result result)
+        {
+            var linkLabel = new LinkLabel()
+            {
+
+                AutoSize = true,
+                Location = new System.Drawing.Point(3, 0),
+                Name = "linkLabel" + szamlaloLink,
+
+                //this.linkLabel1.Text = "linkLabel1";
+            };
+            //linkLabel.BackColor = Color.Yellow;
+            linkLabel.Size = new System.Drawing.Size(55, 13);
+            //linkLabel1.TabIndex = 0;
+            linkLabel.TabStop = true;
+            var linkAct = new LinkLocal();
+            linkLabel.Text = $"{szamlaloLink++}. {result.ToString().Split('\\')?.Last()}";//linkAct.Show =
+            linkLabel.Links.Add(0, result.ToString().Length, result.ToString());// = linkAct.Path = result.ToString();
+            linkLabel.AutoSize = true;
+            //LinkLocals.Add(linkAct);
+            linkLabel.LinkClicked += LinkLabel1_LinkClicked;
+            flowLayoutPanel1.Controls.Add(linkLabel);
+        }
+
+        private void RemoveLastLinklabeToFlowLayoutPanel(Result result)
+        {
+            flowLayoutPanel1.Controls.RemoveAt(flowLayoutPanel1.Controls.Count - 1);
+        }
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -463,6 +394,11 @@ namespace QRCodeWebcam2
         {
             public string Path { get; set; }
             public string Show { get; set; }
+        }
+
+        private void ListaTorleseBtn_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
         }
 
         /*

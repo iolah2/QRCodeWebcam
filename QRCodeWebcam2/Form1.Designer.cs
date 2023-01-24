@@ -90,7 +90,7 @@
             // 
             // scanBtn
             // 
-            this.scanBtn.Location = new System.Drawing.Point(488, 4);
+            this.scanBtn.Location = new System.Drawing.Point(497, 4);
             this.scanBtn.Name = "scanBtn";
             this.scanBtn.Size = new System.Drawing.Size(79, 31);
             this.scanBtn.TabIndex = 9;
