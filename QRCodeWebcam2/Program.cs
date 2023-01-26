@@ -18,7 +18,7 @@ namespace QRCodeWebcam2
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                Application.Run(new Form1());
+                Application.Run(new FormTerv());
             }
             catch (Exception)
             {

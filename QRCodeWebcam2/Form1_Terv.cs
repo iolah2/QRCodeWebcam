@@ -18,7 +18,7 @@ using ZXing.Common;
 
 namespace QRCodeWebcam2
 {
-    public partial class Form1 : Form
+    public partial class FormTerv : Form
     {
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
@@ -36,18 +36,18 @@ namespace QRCodeWebcam2
         private int szamlaloLink;
         //private BarcodeReader barcodeReader;
 
-        public Form1()
+        public FormTerv()
         {
-            this.Width = 1920;
-            this.Height = 1280;
+            Width = 1920; Height = 1280;
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.WindowState = FormWindowState.Maximized;// = AutoSizeMode.
-            startBtn.BackColor = Color.WhiteSmoke;
+            this.WindowState = FormWindowState.Maximized;
+            //startBtn.BackColor = Color.WhiteSmoke;
             scanBtn.BackColor = Color.WhiteSmoke;
             //linePosition = 0;
             szamlaloLink = 1;
             pictureBox.Paint += PictureBox_Paint;
+            CameraStart_Click(null, null);
             //  LinkLocals = new List<LinkLocal>();
             //  this.Controls.Remove(pictureBox1);
             //flowLayoutPanel1 = new FlowLayoutPanel
@@ -56,11 +56,6 @@ namespace QRCodeWebcam2
             //    FlowDirection = FlowDirection.TopDown,
             //    WrapContents = false
             //};            
-        }
-
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-           pictureBox.Invalidate();
         }
 
         private void PictureBox_Paint(object sender, PaintEventArgs e)
@@ -89,6 +84,10 @@ namespace QRCodeWebcam2
 
         private void GetCameras()
         {
+#if DEBUG
+            if(Environment.MachineName == "ISTI-PC")
+            return;
+#endif
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             if (filterInfoCollection.Count == 0)
                 throw new Exception("Nem találtunk kamerát!");
@@ -107,6 +106,10 @@ namespace QRCodeWebcam2
 
         private void CameraStart_Click(object sender, EventArgs e)
         {
+#if DEBUG
+            if(Environment.MachineName == "ISTI-PC")
+            return;
+#endif
             try
             {
                 if (cboDevice.Items.Count == 0)
@@ -121,46 +124,19 @@ namespace QRCodeWebcam2
                 {
                     videoCaptureDevice.Stop();
                     pictureBox.Image = null;
-                    startBtn.BackColor = Color.WhiteSmoke;//.LightGray;
+                    //startBtn.BackColor = Color.WhiteSmoke;//.LightGray;
                     timer1.Stop();
                     scanBtn.BackColor = Color.WhiteSmoke;
                     IsCameraActive = false;
                 }
                 else ///Turn on for camera
                 {
-#if DEBUG
-
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                    AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-#endif
                     pictureBox.Image = null;
                     videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cboDevice.SelectedIndex].MonikerString);
                     videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
                     videoCaptureDevice.Start();
 
-                    startBtn.BackColor = Color.Green;
+                    //startBtn.BackColor = Color.Green;
                     IsCameraActive = true;
                 }
             }
@@ -307,30 +283,6 @@ namespace QRCodeWebcam2
             flowLayoutPanel1.Controls.Add(linkLabel);
         }
 
-        private void AddLinklabeToFlowLayoutPanel(string testing)
-        {
-            var linkLabel = new LinkLabel()
-            {
-
-                AutoSize = true,
-                Location = new System.Drawing.Point(3, 0),
-                Name = "linkLabel" + szamlaloLink,
-
-                //this.linkLabel1.Text = "linkLabel1";
-            };
-            //linkLabel.BackColor = Color.Yellow;
-            linkLabel.Size = new System.Drawing.Size(55, 13);
-            //linkLabel1.TabIndex = 0;
-            linkLabel.TabStop = true;
-            var linkAct = new LinkLocal();
-            linkLabel.Text = $"{szamlaloLink++}. {testing.ToString().Split('\\')?.Last()}";//linkAct.Show =
-            linkLabel.Links.Add(0, linkLabel.Text.Length, testing.ToString());// = linkAct.Path = result.ToString();
-            linkLabel.AutoSize = true;
-            //LinkLocals.Add(linkAct);
-            linkLabel.LinkClicked += LinkLabel1_LinkClicked;
-            flowLayoutPanel1.Controls.Add(linkLabel);
-        }
-
         private void RemoveLastLinklabeToFlowLayoutPanel(Result result)
         {
             flowLayoutPanel1.Controls.RemoveAt(flowLayoutPanel1.Controls.Count - 1);
@@ -366,8 +318,6 @@ namespace QRCodeWebcam2
         private void ListaTorleseBtn_Click(object sender, EventArgs e)
         {
             flowLayoutPanel1.Controls.Clear();
-        }
-
-       
+        }        
     }
 }
