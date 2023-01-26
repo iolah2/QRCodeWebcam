@@ -22,8 +22,8 @@ namespace QRCodeWebcam2
     {
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
-        int width = 220;
-        int height = 220;
+        int width = 250;
+        int height = 250;
         //private Color colorBackStart;
         private Color colorBackScan;
         //Timer timer2;
@@ -38,10 +38,10 @@ namespace QRCodeWebcam2
 
         public FormTerv()
         {
-            Width = 1920; Height = 1280;
+            //Todo for test Width = 1920; Height = 1280;
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            //this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;
             //startBtn.BackColor = Color.WhiteSmoke;
             scanBtn.BackColor = Color.WhiteSmoke;
             //linePosition = 0;
@@ -134,7 +134,7 @@ namespace QRCodeWebcam2
 #if DEBUG
             if (Environment.MachineName == "ISTI-PC")
             {
-#if DEBUG
+//#if DEBUG
 
                 AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
                 AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
@@ -230,7 +230,7 @@ namespace QRCodeWebcam2
                 AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
                 AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
                 AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-#endif
+//#endif
                 return;
             }
 #endif
