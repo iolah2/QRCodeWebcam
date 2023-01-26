@@ -75,6 +75,12 @@ namespace QRCodeWebcam2
         {
             try
             {
+#if DEBUG
+                if (Environment.MachineName.ToUpper() == "ISTI-PC")
+                {
+                    return;
+                }
+#endif
                 GetCameras();
                 videoCaptureDevice = new VideoCaptureDevice();
                 pictureBox.Image = null;
@@ -201,7 +207,11 @@ namespace QRCodeWebcam2
         {
             try
             {
-                if (videoCaptureDevice.IsRunning)
+#if DEBUG
+                if (Environment.MachineName.ToUpper() == "ISTI-PC")
+                    return;
+#endif
+                    if (videoCaptureDevice.IsRunning)
                 {
                     videoCaptureDevice.Stop();
                 }
@@ -230,7 +240,7 @@ namespace QRCodeWebcam2
                     }
                 };
 
-                #region kivett 2023 jan 19
+#region kivett 2023 jan 19
                 //var t1 = DateTime.Now;
                 ////////int x = (pictureBox.Width - width) / 2;
                 ////////int y = (pictur
@@ -243,7 +253,7 @@ namespace QRCodeWebcam2
                 ////////var rect = new Rectangle(a * x + (x % 2) * (width / 2), b * y + (y % 2) * (height / 2), Math.Max(a, b) * width, Math.Max(a, b) * height);//x, y, width, height);
                 ////////var croppedImage = ((Bitmap)pictureBox.Image)
                 ////////    .Clone(rect, pictureBox.Image.PixelFormat);
-                #endregion
+#endregion
 
                 var result = barcodeReader.Decode((Bitmap)pictureBox.Image);//croppedImage);
                 //if (result != null)

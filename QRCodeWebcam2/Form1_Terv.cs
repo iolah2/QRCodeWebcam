@@ -41,13 +41,13 @@ namespace QRCodeWebcam2
             Width = 1920; Height = 1280;
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
             //startBtn.BackColor = Color.WhiteSmoke;
             scanBtn.BackColor = Color.WhiteSmoke;
             //linePosition = 0;
             szamlaloLink = 1;
             pictureBox.Paint += PictureBox_Paint;
-            CameraStart_Click(null, null);
+            
             //  LinkLocals = new List<LinkLocal>();
             //  this.Controls.Remove(pictureBox1);
             //flowLayoutPanel1 = new FlowLayoutPanel
@@ -73,6 +73,7 @@ namespace QRCodeWebcam2
                 GetCameras();
                 videoCaptureDevice = new VideoCaptureDevice();
                 pictureBox.Image = null;
+                CameraStart_Click(null, null);
             }
             catch (Exception ex)
             {
@@ -103,12 +104,135 @@ namespace QRCodeWebcam2
             if (cboDevice.SelectedIndex == -1)
                 cboDevice.SelectedIndex = 0;
         }
+#if DEBUG
+        private void AddLinklabeToFlowLayoutPanel(string testing)
+        {
+            var linkLabel = new LinkLabel()
+            {
 
+                AutoSize = true,
+                Location = new System.Drawing.Point(3, 0),
+                Name = "linkLabel" + szamlaloLink,
+
+                //this.linkLabel1.Text = "linkLabel1";
+            };
+            //linkLabel.BackColor = Color.Yellow;
+            linkLabel.Size = new System.Drawing.Size(55, 13);
+            //linkLabel1.TabIndex = 0;
+            linkLabel.TabStop = true;
+            var linkAct = new LinkLocal();
+            linkLabel.Text = $"{szamlaloLink++}. {testing.ToString().Split('\\')?.Last()}";//linkAct.Show =
+            linkLabel.Links.Add(0, linkLabel.Text.Length, testing.ToString());// = linkAct.Path = result.ToString();
+            linkLabel.AutoSize = true;
+            //LinkLocals.Add(linkAct);
+            linkLabel.LinkClicked += LinkLabel1_LinkClicked;
+            flowLayoutPanel1.Controls.Add(linkLabel);
+        }
+#endif  
         private void CameraStart_Click(object sender, EventArgs e)
         {
 #if DEBUG
-            if(Environment.MachineName == "ISTI-PC")
-            return;
+            if (Environment.MachineName == "ISTI-PC")
+            {
+#if DEBUG
+
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+#endif
+                return;
+            }
 #endif
             try
             {

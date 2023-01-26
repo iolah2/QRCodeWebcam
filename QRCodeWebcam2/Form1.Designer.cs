@@ -68,9 +68,9 @@
             // 
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox.Location = new System.Drawing.Point(0, 35);
+            this.pictureBox.Location = new System.Drawing.Point(0, 38);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(954, 505);
+            this.pictureBox.Size = new System.Drawing.Size(954, 502);
             this.pictureBox.TabIndex = 7;
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
@@ -87,6 +87,7 @@
             // 
             // startBtn
             // 
+            this.startBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.startBtn.Location = new System.Drawing.Point(38, 1);
             this.startBtn.Name = "startBtn";
@@ -164,7 +165,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(954, 35);
+            this.panel1.Size = new System.Drawing.Size(954, 38);
             this.panel1.TabIndex = 13;
             // 
             // panel2
@@ -179,11 +180,12 @@
             // 
             // panel3
             // 
+            this.panel3.AutoSize = true;
             this.panel3.Controls.Add(this.startBtn);
             this.panel3.Controls.Add(this.scanBtn);
             this.panel3.Location = new System.Drawing.Point(368, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(401, 32);
+            this.panel3.Size = new System.Drawing.Size(401, 35);
             this.panel3.TabIndex = 13;
             // 
             // panel4
@@ -193,7 +195,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(346, 35);
+            this.panel4.Size = new System.Drawing.Size(346, 38);
             this.panel4.TabIndex = 14;
             // 
             // panel5
@@ -202,19 +204,19 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.Location = new System.Drawing.Point(775, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(179, 35);
+            this.panel5.Size = new System.Drawing.Size(179, 38);
             this.panel5.TabIndex = 15;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.ClientSize = new System.Drawing.Size(954, 736);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QR kód olvasás";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -222,6 +224,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
