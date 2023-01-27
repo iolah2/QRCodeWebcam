@@ -74,7 +74,7 @@ namespace QRCodeWebcam2
             this.scanBtn.Margin = new System.Windows.Forms.Padding(10, 75, 10, 75);
             this.scanBtn.Name = "scanBtn";
             this.scanBtn.Padding = new System.Windows.Forms.Padding(20);
-            this.scanBtn.Size = new System.Drawing.Size(181, 100);
+            this.scanBtn.Size = new System.Drawing.Size(180, 221);
             this.scanBtn.TabIndex = 9;
             this.scanBtn.Text = "Olvasás";
             this.scanBtn.UseVisualStyleBackColor = true;
@@ -94,10 +94,10 @@ namespace QRCodeWebcam2
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(10, 325);
+            this.button1.Location = new System.Drawing.Point(10, 446);
             this.button1.Margin = new System.Windows.Forms.Padding(10, 75, 10, 75);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(181, 101);
+            this.button1.Size = new System.Drawing.Size(180, 222);
             this.button1.TabIndex = 12;
             this.button1.Text = "Lista törlése";
             this.button1.UseVisualStyleBackColor = true;
@@ -106,9 +106,9 @@ namespace QRCodeWebcam2
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 749F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 0);
@@ -116,8 +116,8 @@ namespace QRCodeWebcam2
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 507);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1370, 749);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // groupBox1
@@ -125,10 +125,10 @@ namespace QRCodeWebcam2
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.groupBox1.Location = new System.Drawing.Point(541, 15);
+            this.groupBox1.Location = new System.Drawing.Point(758, 15);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 15, 5, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(258, 478);
+            this.groupBox1.Size = new System.Drawing.Size(401, 719);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Beolvasott fájl elérés:";
@@ -141,18 +141,19 @@ namespace QRCodeWebcam2
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 25);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(252, 450);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(395, 691);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
             // 
             // pictureBox
             // 
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox.Location = new System.Drawing.Point(30, 30);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(30);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(476, 448);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox.Size = new System.Drawing.Size(693, 689);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 7;
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
@@ -164,12 +165,13 @@ namespace QRCodeWebcam2
             this.tableLayoutPanel2.Controls.Add(this.scanBtn, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(807, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1167, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(174, 502);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 743);
             this.tableLayoutPanel2.TabIndex = 12;
             // 
             // FormTerv
@@ -178,7 +180,7 @@ namespace QRCodeWebcam2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.ClientSize = new System.Drawing.Size(984, 507);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.cboDevice);
             this.Name = "FormTerv";

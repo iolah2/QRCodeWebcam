@@ -23,8 +23,8 @@ namespace QRCodeWebcam2
     {
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
-        int width = 220;
-        int height = 220;
+        int width = 250;
+        int height = 250;
         //private Color colorBackStart;
         private Color colorBackScan;
         //Timer timer2;
