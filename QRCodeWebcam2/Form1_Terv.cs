@@ -40,7 +40,7 @@ namespace QRCodeWebcam2
         public FormTerv()
         {
             //Todo for test
-            Width = 1920; Height = 1280;
+            //Width = 1920; Height = 1280;
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
             this.WindowState = FormWindowState.Maximized;
@@ -60,20 +60,20 @@ namespace QRCodeWebcam2
             //};            
         }
 
-        
 
-private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
+
+        private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
         {
             if (e.Mode == PowerModes.Resume)
             {
                 CameraStart_Click(null, null);
-                Debug.WriteLine("Now I awake: " + DateTime.Now);
+                Program.AddMessage("Kamera újraindítva!");//Debug.WriteLine("Now I awake: " + DateTime.Now);
                 //videoCaptureDevice.Start();
             }
             else if (e.Mode == PowerModes.Suspend)
             {
                 CameraStart_Click(null, null);
-                Debug.WriteLine("Now go to sleep: " + DateTime.Now);
+                //Debug.WriteLine("Now go to sleep: " + DateTime.Now);
                 //videoCaptureDevice.Stop();
             }
         }
@@ -85,7 +85,7 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
             var p = new Pen(Brushes.White, 2);
             e.Graphics.DrawRectangle(p, rect);
 
-        }        
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -96,9 +96,10 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
                 pictureBox.Image = null;
                 CameraStart_Click(null, null);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                //Program.AddMessage(ex.Message);
+                //MessageBox.Show("Test_1");
                 Program.CameraMistake();
             }
         }
@@ -113,9 +114,13 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
                 return;
             }
 #endif
-                filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             if (filterInfoCollection.Count == 0)
-                throw new Exception("Nem találtunk kamerát!");
+            {
+                //MessageBox.Show("Test_2");
+                Program.CameraMistake();//throw new Exception("Nem találtunk kamerát!");
+                return;
+            }
             for (int i = 0; i < filterInfoCollection.Count; i++)
             {
                 var device = filterInfoCollection[i];
@@ -262,10 +267,12 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
             {
                 if (cboDevice.Items.Count == 0)
                 {
-                    MessageBox.Show("Kérem csatlakoztassa a kamerát, majd nyomjon az OK gombra!\nEgyéb esetben a kódolvasó leáll!");
-                    GetCameras();
+                    //MessageBox.Show("Test_3");
+                    Program.CameraMistake();
+                    //Program.AddMessage("Kérem csatlakoztassa a kamerát!\nA kódolvasó leáll!");
+                    /*GetCameras();
                     if (cboDevice.Items.Count == 0)
-                        throw new Exception("Nincs elérhető kamera!");
+                        throw new Exception("Nincs elérhető kamera!");*/
                 }
                 ///Camera turn off
                 if (IsCameraActive)
@@ -290,7 +297,8 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                // Program.AddMessage(ex.Message);
+                //MessageBox.Show("Test_4");
                 Program.CameraMistake();
             }
         }
@@ -322,7 +330,7 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        {            
             try
             {
                 if (videoCaptureDevice.IsRunning)
@@ -332,7 +340,8 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
             }
             catch (Exception)
             {
-                Program.CameraMistake();
+                //MessageBox.Show("Test_5");
+                //Program.CameraMistake();
             }
         }
 
@@ -383,10 +392,10 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
                     try
                     {
 
-//#if DEBUG
-//if(Environment.MachineName == "ISTI-PC")
-//                        throw new Exception();
-//#endif
+                        //#if DEBUG
+                        //if(Environment.MachineName == "ISTI-PC")
+                        //                        throw new Exception();
+                        //#endif
 
                         Process.Start(result.ToString());
                         //Timer t1 = new Timer();
@@ -394,14 +403,14 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
                     }
                     catch (Exception ex)
                     {
-//#if DEBUG
-//if(Environment.MachineName == "ISTI-PC")
-//                        flowLayoutPanel1.Controls.Add(new Label() { Text = result.ToString() });
-//#else                        
-                        MessageBox.Show($"Hiba a ({result}) fájl megnyitásakor!\n\n"
+                        //#if DEBUG
+                        //if(Environment.MachineName == "ISTI-PC")
+                        //                        flowLayoutPanel1.Controls.Add(new Label() { Text = result.ToString() });
+                        //#else                        
+                        Program.AddMessage($"Hiba a ({result}) fájl megnyitásakor!\n\n"
                             + ex.Message);
                         RemoveLastLinklabeToFlowLayoutPanel(result);
-//#endif
+                        //#endif
                     }
                 }
             }
@@ -441,7 +450,7 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
             Process.Start(e.Link.LinkData.ToString());
         }
 
-        
+
         private void cboDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -466,6 +475,6 @@ private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
         private void ListaTorleseBtn_Click(object sender, EventArgs e)
         {
             flowLayoutPanel1.Controls.Clear();
-        }        
+        }
     }
 }

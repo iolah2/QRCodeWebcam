@@ -28,8 +28,14 @@ namespace QRCodeWebcam2
 
         public static void CameraMistake()
         {
-            MessageBox.Show("Kérem csatlakoztassa a kamerát!\nA kódolvasó leáll!");
+            AddMessage("Kérem csatlakoztassa a kamerát!\nA kódolvasó leáll!");
             Application.Exit();
+        }
+
+        public static void AddMessage(string message)
+        {
+            MessageBoxForm frm = new MessageBoxForm(message);
+            frm.ShowDialog();
         }
     }
 }
