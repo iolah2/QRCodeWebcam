@@ -17,5 +17,10 @@ namespace QRCodeWebcam2
             InitializeComponent();
             label1.Text = message;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
