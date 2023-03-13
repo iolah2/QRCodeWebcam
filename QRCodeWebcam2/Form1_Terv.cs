@@ -23,8 +23,8 @@ namespace QRCodeWebcam2
     {
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
-        int width = 220;
-        int height = 220;
+        int width = 200;
+        int height = 200;
         //private Color colorBackStart;
         private Color colorBackScan;
         //Timer timer2;
@@ -81,9 +81,12 @@ namespace QRCodeWebcam2
 
         private void PictureBox_Paint(object sender, PaintEventArgs e)
         {
-            var rect = new Rectangle((pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2, width, height);
-            var p = new Pen(Brushes.White, 2);
-            e.Graphics.DrawRectangle(p, rect);
+            //var rect = new Rectangle((pictureBox.Width - width) / 2, (pictureBox.Height - height) / 2, width, height);
+            //var p = new Pen(Brushes.White, 2);
+            ////var rect2 = new Rectangle((pictureBox.Width - width) / 2-10, (pictureBox.Height - height) / 2-10, width+20, height+20);
+            ////var p2 = new Pen(Brushes.Red, 2);
+            //e.Graphics.DrawRectangle(p, rect);
+            ////e.Graphics.DrawRectangle(p2, rect2);
 
         }
 
@@ -111,7 +114,7 @@ namespace QRCodeWebcam2
             if (Environment.MachineName == "ISTI-PC")
             {
              //   Console.WriteLine();
-                return;
+              //  return;
             }
 #endif
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -160,109 +163,109 @@ namespace QRCodeWebcam2
 #endif  
         private void CameraStart_Click(object sender, EventArgs e)
         {
-#if DEBUG
-            if (Environment.MachineName == "ISTI-PC")
-            {
-                //#if DEBUG
-                Debug.WriteLine("Camera click on/off");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
-                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//#if DEBUG
+//            if (Environment.MachineName == "ISTI-PC")
+//            {
+//                //#if DEBUG
+//                Debug.WriteLine("Camera click on/off");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+//                AddLinklabeToFlowLayoutPanel("dfsfdf  fssődf sffd sfdsfd");
+////#endif
+//                return;
+//            }
 //#endif
-                return;
-            }
-#endif
             try
             {
                 if (cboDevice.Items.Count == 0)
@@ -347,7 +350,7 @@ namespace QRCodeWebcam2
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-
+            //timer1.Stop();
 
             if (pictureBox.Image != null)
             {
@@ -372,13 +375,65 @@ namespace QRCodeWebcam2
                 ////////int a = pictureBox.Image.Width / pictureBox.Width;
                 ////////int b = pictureBox.Image.Height / pictureBox.Height;
 
+                //var rect2 = new Rectangle((pictureBox.Width - width) / 2 - 10, (pictureBox.Height - height) / 2 - 10, width + 20, height + 20);
+                ////var p2 = new Pen(Brushes.Red, 2);
+                //////////var rect = new Rectangle(a * x + (x % 2) * (width / 2), b * y + (y % 2) * (height / 2), Math.Max(a, b) * width, Math.Max(a, b) * height);//x, y, width, height);
+                //var croppedImage = ((Bitmap)pictureBox.Image)
+                //    .Clone(rect2,PixelFormat.Format48bppRgb);
+                #endregion
+                #region febr 1
+                //pictureBox.InitialImage.Save(@"F:\2023\Varrival\Test\Full_test.jpg");
+                //pictureBox.Image.Save(@"F:\2023\Varrival\Test\Full_image.jpg");
+                var originalImage = (Bitmap)pictureBox.Image;
+                int x = (originalImage.Width - pictureBox.ClientSize.Width) / 2;// 4;
+                int y = (originalImage.Height - pictureBox.ClientSize.Height) / 2;// / 4;
+                int width = pictureBox.ClientSize.Width; //originalImage.Width / 2;
+                int height = pictureBox.ClientSize.Height; //originalImage.Height / 2;
 
-                ////////var rect = new Rectangle(a * x + (x % 2) * (width / 2), b * y + (y % 2) * (height / 2), Math.Max(a, b) * width, Math.Max(a, b) * height);//x, y, width, height);
-                ////////var croppedImage = ((Bitmap)pictureBox.Image)
-                ////////    .Clone(rect, pictureBox.Image.PixelFormat);
+                Rectangle cropRect = new Rectangle(x, y, width, height);
+                Bitmap croppedImage = originalImage.Clone(cropRect, originalImage.PixelFormat);
+
+                pictureBox.Image = croppedImage;
+
+                //var reader = new BarcodeReader();
+                //var result = reader.Decode(croppedImage);
+
+                //Bitmap originalImage = (Bitmap)pictureBox.Image;
+                //int x = pictureBox.ClientRectangle.X; //.HorizontalScrollBar.Value;
+                //int y = pictureBox.ClientRectangle.Y;//VerticalScrollBar.Value;
+                //int width = pictureBox.ClientSize.Width;
+                //int height = pictureBox.ClientSize.Height;
+
+                //Rectangle cropRect = new Rectangle(pictureBox.Bounds.X, pictureBox.Bounds.Y, width, height);
+                //Bitmap croppedImage = originalImage.Clone(cropRect, originalImage.PixelFormat);
+
+                //pictureBox.Image = croppedImage;
+
+                //Bitmap originalImage = (Bitmap)pictureBox.Image;
+                //int x = pictureBox.DisplayRectangle.X;
+                //int y = pictureBox.DisplayRectangle.Y;
+                //int width = pictureBox.DisplayRectangle.Width;
+                //int height = pictureBox.DisplayRectangle.Height;
+
+                //Rectangle cropRect = new Rectangle(x, y, width, height);
+                //Bitmap croppedImage = originalImage.Clone(cropRect, originalImage.PixelFormat);
+
+                //pictureBox.Image = croppedImage;
+                //Bitmap originalImage = (Bitmap)pictureBox.Image;
+                //int width = pictureBox.ClientSize.Width;
+                //int height = pictureBox.ClientSize.Height;
+
+                //Image resizedImage = originalImage.GetThumbnailImage(width, height, null, IntPtr.Zero);
+
+                //pictureBox.Image = resizedImage;
                 #endregion
 
-                var result = barcodeReader.Decode((Bitmap)pictureBox.Image);//croppedImage);
+                //pictureBox.Image.Save(@"F:\2023\Varrival\Test\Showed_part.jpg");
+                ////Process.Start(@"F:\2023\Varrival\Test\Full_test.jpg");
+                //Process.Start(@"F:\2023\Varrival\Test\Full_image.jpg");
+                //Process.Start(@"F:\2023\Varrival\Test\Showed_part.jpg");
+                //Application.Exit();
+                var result = barcodeReader.Decode((Bitmap)pictureBox.Image);//                                                  croppedImage);
                 //if (result != null)
                 //{
                 //    pictureBox.Image.Save(@"F:\2023\Varrival\Test\" + szamlaloLink + "_test.jpg");
@@ -388,6 +443,7 @@ namespace QRCodeWebcam2
                 if (result != null)
                 {
                     Scan_click(null, null);
+                    //MessageBox.Show($"{pictureBox.Width}x{pictureBox.Height} and Rectangle {width}x{height} and window: {Width}x{Height}");
                     AddLinklabeToFlowLayoutPanel(result);
                     try
                     {
@@ -475,6 +531,11 @@ namespace QRCodeWebcam2
         private void ListaTorleseBtn_Click(object sender, EventArgs e)
         {
             flowLayoutPanel1.Controls.Clear();
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
